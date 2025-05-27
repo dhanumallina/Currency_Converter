@@ -1,41 +1,42 @@
+
 rates = {
-"USD": 1.0,
-"EUR": 0.91,
-"GBP": 0.78,
-"INR": 83.25,
-"JPY": 155.60,
-"CAD": 1.36
+    "USD": 1.0,
+    "EUR": 0.91,
+    "GBP": 0.78,
+    "INR": 83.25,
+    "JPY": 155.60,
+    "CAD": 1.36
 }
-def convert_currency(amount, from_currency,
-to_currency):
-usd_amount = amount / rates[from_currency]
-converted_amount = usd_amount *
-rates[to_currency]
-return round(converted_amount, 2)
+
+def convert_currency(amount, from_currency, to_currency):
+    usd_amount = amount / rates[from_currency]
+    converted_amount = usd_amount * rates[to_currency]
+    return round(converted_amount, 2)
+
 while True:
-print("\n ~~~CURRENCY CONVERTER~~~
-")
-print("Supported
-currencies:USD,EUR,GBP,INR,JPY,CAD")
-amount = float(input("Enter amount: "))
-from_currency = input("From : ").upper()
-if from_currency not in rates:
-print(f"Error: Currency '{from_currency}' not
-found.")
-continue
-to_currency = input("To : ").upper()
-if to_currency not in rates:
-print(f"Error: Currency '{to_currency}' not
-found.")
-continue
-result = convert_currency(amount,
-from_currency, to_currency)
-print(f"{amount} {from_currency} = {result}
-{to_currency}")
-again = input("Do you want to convert again?
-(yes/no): ").lower()
-if again !=
-'yes':
-print("Thank you for using the currency
-converter!")
-break
+    print("\n~~~ CURRENCY CONVERTER ~~~")
+    print("Supported currencies: USD, EUR, GBP, INR, JPY, CAD")
+    
+    try:
+        amount = float(input("Enter amount: "))
+    except ValueError:
+        print("Invalid amount. Please enter a number.")
+        continue
+
+    from_currency = input("From: ").upper()
+    if from_currency not in rates:
+        print(f"Error: Currency '{from_currency}' not found.")
+        continue
+
+    to_currency = input("To: ").upper()
+    if to_currency not in rates:
+        print(f"Error: Currency '{to_currency}' not found.")
+        continue
+
+    result = convert_currency(amount, from_currency, to_currency)
+    print(f"{amount} {from_currency} = {result} {to_currency}")
+
+    again = input("Do you want to convert again? (yes/no): ").lower()
+    if again != 'yes':
+        print("Thank you for using the currency converter!")
+        break
