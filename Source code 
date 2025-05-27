@@ -39,4 +39,4 @@ while True:
     if again != 'yes':
         print("Thank you for using the currency converter!")
         break
-  
+ 
